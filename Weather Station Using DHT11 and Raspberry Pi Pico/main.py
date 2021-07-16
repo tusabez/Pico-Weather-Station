@@ -2,10 +2,12 @@ from machine import Pin
 import utime as time
 from pico_i2c_lcd import I2cLcd
 from machine import I2C
-from dht import DHT11, InvalidChecksum
+from DHT22 import DHT22
 
 i2c = I2C(id=1,scl=Pin(27),sda=Pin(26),freq=100000)
 lcd = I2cLcd(i2c, 0x27, 2, 16)
+dht_data = Pin(15,Pin.IN,Pin.PULL_UP)
+dht_sensor=DHT22(dht_data,Pin(14,Pin.OUT),dht11=False)
 
 while True:
      T,H = dht_sensor.read()
