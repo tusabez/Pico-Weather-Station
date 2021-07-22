@@ -1,7 +1,6 @@
-from machine import Pin
+from machine import Pin, I2C
 import utime as time
 from pico_i2c_lcd import I2cLcd
-from machine import I2C
 from DHT22 import DHT22
 
 i2c = I2C(id=1,scl=Pin(27),sda=Pin(26),freq=100000)
